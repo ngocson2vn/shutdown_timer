@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -e
 
 if [[ "$(whoami)" != "root" ]]; then
     echo "ERROR: You must run this script with root permission!"
@@ -9,10 +9,6 @@ fi
 
 # Build main.c
 make
-
-if [[ "$?" != 0 ]]; then
-    exit 1
-fi
 
 cp -fv main /usr/local/bin/shutdown_timer
 
