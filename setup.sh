@@ -10,8 +10,16 @@ fi
 # Build main.c
 make
 
+if [[ "$?" != 0 ]]; then
+    exit 1
+fi
+
 cp -fv main /usr/local/bin/shutdown_timer
 
-cp -fv ./com.timer.shutdown.plist /Library/LaunchDaemons/
+PLIST_FILE=/Library/LaunchDaemons/com.timer.shutdown.plist
+cp -fv ./com.timer.shutdown.plist ${PLIST_FILE}
 
-launchctl bootstrap system /Library/LaunchDaemons/com.timer.shutdown.plist
+launchctl bootstrap system ${PLIST_FILE}
+launchctl kickstart -k system/com.timer.shutdown
+
+echo "SUCCESS"
