@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://apple.com">
+<plist version="1.0">
+<dict>
+    <!-- A unique identifier for your daemon -->
+    <key>Label</key>
+    <string>com.timer.shutdown</string>
+
+    <!-- The exact path to the executable program -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/bin/shutdown_timer</string>
+    </array>
+
+    <!-- Crucial key: forces the daemon to stay alive persistently -->
+    <key>KeepAlive</key>
+    <true/>
+
+    <!-- Optional: Standard logs to help you debug errors -->
+    <key>StandardOutPath</key>
+    <string>/var/log/shutdown_timer.log</string>
+    <key>StandardErrorPath</key>
+    <string>/var/log/shutdown_timer.err</string>
+</dict>
+</plist>
